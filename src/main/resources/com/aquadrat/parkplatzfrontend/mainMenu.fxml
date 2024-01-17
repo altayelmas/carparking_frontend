@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="667.0" prefWidth="1085.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aquadrat.parkplatzfrontend.MainController">
+   <children>
+      <TabPane prefHeight="667.0" prefWidth="1085.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="createParkingLotTab" text="Create Parking Lot">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="createParkingLot_name" layoutX="298.0" layoutY="79.0" />
+                        <TextField fx:id="createParkingLot_street" layoutX="298.0" layoutY="122.0" />
+                        <TextField fx:id="createParkingLot_city" layoutX="298.0" layoutY="167.0" />
+                        <TextField fx:id="createParkingLot_postCode" layoutX="298.0" layoutY="210.0" />
+                        <TextField fx:id="createParkingLot_country" layoutX="298.0" layoutY="252.0" />
+                        <TextField fx:id="createParkingLot_numberOfSlots" layoutX="298.0" layoutY="293.0" />
+                        <Text layoutX="257.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                        <Text layoutX="257.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street" />
+                        <Text layoutX="257.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" />
+                        <Text layoutX="240.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Post Code" />
+                        <Text layoutX="246.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" />
+                        <Text layoutX="202.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Slots" />
+                        <Button fx:id="createParkingLotSubmit" layoutX="346.0" layoutY="353.0" mnemonicParsing="false" onAction="#createParkingLotSubmit" text="Submit" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="getParkingLotTab" text="Get Parking Lot">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="570.0" prefWidth="876.0">
+                     <children>
+                        <TableView fx:id="getParkingLot_parkingLotTable" layoutX="66.0" layoutY="77.0" prefHeight="90.0" prefWidth="601.0">
+                          <columns>
+                            <TableColumn fx:id="getParkingLot_lotId" prefWidth="75.0" text="lotID" />
+                            <TableColumn fx:id="getParkingLot_name" prefWidth="92.0" text="name" />
+                              <TableColumn fx:id="getParkingLot_AddressId" prefWidth="67.20008850097656" text="addressID" />
+                              <TableColumn fx:id="getParkingLot_street" prefWidth="92.79998779296875" text="street" />
+                              <TableColumn fx:id="getParkingLot_city" prefWidth="84.800048828125" text="city" />
+                              <TableColumn fx:id="getParkingLot_postCode" prefWidth="85.60003662109375" text="postCode" />
+                              <TableColumn fx:id="getParkingLot_Country" prefWidth="107.20001220703125" text="country" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="getParkingLot_updateParkingLotTable" layoutX="712.0" layoutY="96.0" mnemonicParsing="false" onAction="#getParkingLot_updateParkingLotTable" text="Update Table" />
+                        <TableView fx:id="getParkingLot_parkSlotTable" layoutX="66.0" layoutY="227.0" prefHeight="298.0" prefWidth="228.0">
+                          <columns>
+                            <TableColumn fx:id="getParkingLot_slotId" prefWidth="75.0" text="slotID" />
+                            <TableColumn fx:id="getParkingLot_isAvailable" prefWidth="75.0" text="isAvailable" />
+                              <TableColumn fx:id="getParkingLot_parkSlotLotId" prefWidth="75.0" text="lotID" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="getParkingLot_updateParkSlotTable" layoutX="355.0" layoutY="350.0" mnemonicParsing="false" onAction="#getParkingLot_updateParkSlotTable" text="Update Table" />
+                        <TextField fx:id="getParkingLot_getLotId" layoutX="121.0" layoutY="30.0" />
+                        <Text layoutX="78.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lot ID" wrappingWidth="34.93670654296875" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab fx:id="getAllParkingLotsTab" onSelectionChanged="#updateParkingLotTable" text="Get All Parking Lots">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="parkingLotTable" editable="true" layoutX="73.0" layoutY="42.0" prefHeight="454.0" prefWidth="609.0">
+                          <columns>
+                            <TableColumn fx:id="parkingLot_lotIdColumn" prefWidth="56.800018310546875" sortable="false" text="lotID" />
+                            <TableColumn fx:id="parkingLot_nameColumn" prefWidth="121.5999755859375" sortable="false" text="name" />
+                              <TableColumn fx:id="parkingLot_addressIdColumn" prefWidth="68.00001525878906" sortable="false" text="addressID" />
+                              <TableColumn fx:id="parkingLot_streetColumn" prefWidth="90.4000244140625" sortable="false" text="street" />
+                              <TableColumn fx:id="parkingLot_cityColumn" prefWidth="71.20001220703125" sortable="false" text="city" />
+                              <TableColumn fx:id="parkingLot_postCodeColumn" prefWidth="96.79998779296875" sortable="false" text="postCode" />
+                              <TableColumn fx:id="parkingLot_countryColumn" prefWidth="105.5999755859375" sortable="false" text="country" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="deleteParkingLotButton" layoutX="714.0" layoutY="121.0" mnemonicParsing="false" onAction="#deleteParkingLot" text="Delete Parking Lot" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="updateParkingLotTab" text="Update Parking Lot">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="updateParkingLot_name" layoutX="277.0" layoutY="94.0" />
+                        <TextField fx:id="updateParkingLot_street" layoutX="277.0" layoutY="138.0" />
+                        <TextField fx:id="updateParkingLot_city" layoutX="277.0" layoutY="178.0" />
+                        <TextField fx:id="updateParkingLot_postCode" layoutX="277.0" layoutY="224.0" />
+                        <TextField fx:id="updateParkingLot_country" layoutX="277.0" layoutY="268.0" />
+                        <TextField fx:id="updateParkingLot_numberOfSlots" layoutX="277.0" layoutY="311.0" />
+                        <Text layoutX="229.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                        <Text layoutX="229.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street" />
+                        <Text layoutX="234.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" />
+                        <Text layoutX="218.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Post Code" />
+                        <Text layoutX="223.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" />
+                        <Text layoutX="179.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Slots" />
+                        <Button layoutX="292.0" layoutY="373.0" mnemonicParsing="false" onAction="#updateParkingLot" text="Update Parking Lot" />
+                        <TextField fx:id="updateParkingLot_lotId" layoutX="277.0" layoutY="52.0" />
+                        <Text layoutX="234.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lot ID" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="createTicketTab" text="Create Ticket">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="createTicket_licencePlate" layoutX="324.0" layoutY="101.0" />
+                        <TextField fx:id="createTicket_lotId" layoutX="324.0" layoutY="187.0" />
+                        <TextField fx:id="createTicket_slotId" layoutX="324.0" layoutY="236.0" />
+                        <Text layoutX="243.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Licence Plate" />
+                        <Text layoutX="244.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehicle Type" />
+                        <Text layoutX="261.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lot ID" />
+                        <Text layoutX="257.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Slot ID" />
+                        <Button fx:id="createTicket_button" layoutX="353.0" layoutY="289.0" mnemonicParsing="false" onAction="#createTicket" text="Create Ticket" />
+                        <ComboBox fx:id="createTicket_vehicleType" layoutX="324.0" layoutY="140.0" prefHeight="28.0" prefWidth="151.0" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="getAllTicketsTab" onSelectionChanged="#updateTicketTable" text="Get All Tickets">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="599.0" prefWidth="1062.0">
+                     <children>
+                        <TableView fx:id="ticketTable" layoutX="45.0" layoutY="38.0" prefHeight="473.0" prefWidth="668.0">
+                          <columns>
+                            <TableColumn fx:id="ticket_ticketIdColumn" prefWidth="75.0" text="ticketID" />
+                            <TableColumn fx:id="ticket_entryDateColumn" prefWidth="148.0" text="entryDate" />
+                              <TableColumn fx:id="ticket_exitDateColumn" prefWidth="139.20001220703125" text="exitDate" />
+                              <TableColumn fx:id="ticket_isValidColumn" minWidth="0.0" prefWidth="63.2000732421875" text="isValid" />
+                              <TableColumn fx:id="ticket_licencePlateColumn" prefWidth="103.20001220703125" text="licencePlate" />
+                              <TableColumn fx:id="ticket_slotIdColumn" minWidth="0.0" prefWidth="66.4000244140625" text="slotID" />
+                              <TableColumn fx:id="ticket_lotIdColumn" prefWidth="71.99993896484375" text="lotID" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="parkOutButton" layoutX="798.0" layoutY="170.0" mnemonicParsing="false" onAction="#parkOut" text="Park Out" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="getAllVehiclesTab" onSelectionChanged="#updateVehicleTable" text="Get All Vehicles">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="vehicleTable" layoutX="88.0" layoutY="58.0" prefHeight="364.0" prefWidth="300.0">
+                          <columns>
+                            <TableColumn fx:id="vehicle_licencePlate" prefWidth="113.60003662109375" text="licencePlate" />
+                            <TableColumn fx:id="vehicle_vehicleType" prefWidth="92.79998779296875" text="vehicleType" />
+                              <TableColumn fx:id="vehicle_ticketID" prefWidth="90.4000244140625" text="ticketID" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
